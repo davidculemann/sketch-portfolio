@@ -52,10 +52,7 @@ export function RandomPolygons(): JSX.Element {
 
         p5.beginShape();
         defineSymmetryVertices(randomPoints, p5);
-        p5.fill(p5.random(0, 250), p5.random(0, 250), p5.random(0, 250));
-        if (pallete) {
-          p5.fill(p5.random(pallete));
-        }
+        p5.fill(p5.random(pallete));
         p5.endShape(p5.CLOSE);
       }
     }
