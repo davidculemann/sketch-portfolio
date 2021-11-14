@@ -2,52 +2,59 @@ import Sketch from "react-p5";
 import p5Types from "p5";
 
 export function RandomPolygons(): JSX.Element {
-
   const vertexLength = 150;
 
-  const pallete: string[] | number[] = ["#594F4F", "#547980", "#45ADA8", "#9DE0AD", "#E5FCC2", "#594F4F", "#547980", "#45ADA8"];
+  const pallete: string[] | number[] = [
+    "#594F4F",
+    "#547980",
+    "#45ADA8",
+    "#9DE0AD",
+    "#E5FCC2",
+    "#594F4F",
+    "#547980",
+    "#45ADA8",
+  ];
 
   // const lengths = [50, 150, 250];
   // const grayscalePallete = [220]
   // const colouredPallete = ["#594F4F", "#547980", "#45ADA8", "#9DE0AD", "#E5FCC2", "#594F4F", "#547980", "#45ADA8"]
 
   interface IPoints {
-    x: number
-    y: number
+    x: number;
+    y: number;
   }
 
   function setup(p5: p5Types) {
     p5.createCanvas(p5.windowWidth, p5.windowHeight);
     p5.frameRate(20);
     p5.background(100);
-    p5.noStroke()
+    p5.noStroke();
     // shadowsOn();
     //noLoop();
   }
 
   function draw(p5: p5Types) {
-
-    const numShapes = p5.random(2, 5)
+    const numShapes = p5.random(2, 5);
     for (let i = 0; i < numShapes; i++) {
-      const numVertices = p5.random(3, 6)
-      const randomPoints: IPoints[] = []
+      const numVertices = p5.random(3, 6);
+      const randomPoints: IPoints[] = [];
       for (i = 0; i < numVertices; i++) {
         randomPoints.push({
           x: p5.random(-vertexLength, vertexLength),
-          y: p5.random(-vertexLength, vertexLength)
-        })
+          y: p5.random(-vertexLength, vertexLength),
+        });
       }
       if (p5.mouseIsPressed) {
         p5.beginShape();
         defineVertices(randomPoints, p5);
-        p5.fill(p5.random(pallete))
-        p5.endShape(p5.CLOSE)
+        p5.fill(p5.random(pallete));
+        p5.endShape(p5.CLOSE);
 
-        p5.beginShape()
+        p5.beginShape();
         defineSymmetryVertices(randomPoints, p5);
-        p5.fill(p5.random(0, 250), p5.random(0, 250), p5.random(0, 250))
+        p5.fill(p5.random(0, 250), p5.random(0, 250), p5.random(0, 250));
         if (pallete) {
-          p5.fill(p5.random(pallete))
+          p5.fill(p5.random(pallete));
         }
         p5.endShape(p5.CLOSE);
       }
@@ -64,7 +71,7 @@ export function RandomPolygons(): JSX.Element {
 
   function defineSymmetryVertices(randomPoints: IPoints[], p5: p5Types) {
     for (const point of randomPoints) {
-      p5.vertex(p5.width - (p5.mouseX + point.x), (p5.mouseY + point.y));
+      p5.vertex(p5.width - (p5.mouseX + point.x), p5.mouseY + point.y);
     }
   }
 
