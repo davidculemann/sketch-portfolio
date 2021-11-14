@@ -1,8 +1,8 @@
 import { Sketch1 } from "./components/TestSketch";
-import { ConcentricCircles } from "./components/ConcentricCircles";
+import { ConcentricCircles } from "./components/ConcentricCirclesJS";
 import { RandomPolygons } from "./components/RandomPolygons";
 
-const Picker: number[] = [1, 1, 0];
+const Picker: number[] = [0, 1, 0];
 
 function App(): JSX.Element {
   return (
