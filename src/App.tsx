@@ -1,7 +1,13 @@
-import { greet } from "./utils/greet";
+import { Sketch1 } from "./components/sketch1";
+import { ConcentricCircles } from "./components/ConcentricCircles";
 
 function App(): JSX.Element {
-  return <h1>{greet("World")}</h1>;
+  return (
+    <div>
+      <ConcentricCircles />
+      <Sketch1 />
+    </div>
+  );
 }
 
 export default App;
