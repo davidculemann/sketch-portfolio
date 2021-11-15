@@ -16,8 +16,17 @@ export function RandomPolygons(): JSX.Element {
   ];
 
   const lengths = [50, 150, 250];
-  const grayscalePallete = [220]
-  const colouredPallete = ["#594F4F", "#547980", "#45ADA8", "#9DE0AD", "#E5FCC2", "#594F4F", "#547980", "#45ADA8"]
+  const grayscalePallete = [220];
+  const colouredPallete = [
+    "#594F4F",
+    "#547980",
+    "#45ADA8",
+    "#9DE0AD",
+    "#E5FCC2",
+    "#594F4F",
+    "#547980",
+    "#45ADA8",
+  ];
 
   interface IPoints {
     x: number;
@@ -77,25 +86,25 @@ export function RandomPolygons(): JSX.Element {
   //   p5.drawingContext.shadowColor = p5.color(50, 150);
   // }
 
-
-  function keyPressed(p5: p5Types) { // eslint-disable-line no-unused-vars
+  function keyPressed(p5: p5Types) {
+    // eslint-disable-line no-unused-vars
     if (p5.key === "1") {
-      p5.background(100)
+      p5.background(100);
     }
     if (p5.key === "2") {
-      vertexLength = lengths[0]
+      vertexLength = lengths[0];
     }
     if (p5.key === "3") {
-      vertexLength = lengths[1]
+      vertexLength = lengths[1];
     }
     if (p5.key === "4") {
-      vertexLength = lengths[2]
+      vertexLength = lengths[2];
     }
     if (p5.key === "g") {
-      pallete = grayscalePallete
+      pallete = grayscalePallete;
     }
     if (p5.key === "c") {
-      pallete = colouredPallete
+      pallete = colouredPallete;
     }
   }
 
