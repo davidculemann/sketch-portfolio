@@ -2,9 +2,9 @@ import Sketch from "react-p5";
 import p5Types from "p5";
 
 export function RandomPolygons(): JSX.Element {
-  const vertexLength = 150;
+  let vertexLength = 150;
 
-  const pallete: string[] | number[] = [
+  let pallete: string[] | number[] = [
     "#594F4F",
     "#547980",
     "#45ADA8",
@@ -15,9 +15,9 @@ export function RandomPolygons(): JSX.Element {
     "#45ADA8",
   ];
 
-  // const lengths = [50, 150, 250];
-  // const grayscalePallete = [220]
-  // const colouredPallete = ["#594F4F", "#547980", "#45ADA8", "#9DE0AD", "#E5FCC2", "#594F4F", "#547980", "#45ADA8"]
+  const lengths = [50, 150, 250];
+  const grayscalePallete = [220]
+  const colouredPallete = ["#594F4F", "#547980", "#45ADA8", "#9DE0AD", "#E5FCC2", "#594F4F", "#547980", "#45ADA8"]
 
   interface IPoints {
     x: number;
@@ -29,7 +29,7 @@ export function RandomPolygons(): JSX.Element {
     p5.frameRate(20);
     p5.background(100);
     p5.noStroke();
-    // shadowsOn();
+    // shadowsOn(30, p5);
     //noLoop();
   }
 
@@ -72,35 +72,32 @@ export function RandomPolygons(): JSX.Element {
     }
   }
 
-  // function shadowsOn(amount = 30) {
-  //   drawingContext.shadowBlur = amount;
-  //   drawingContext.shadowColor = p5.color(50, 150);
+  // function shadowsOn(amount: number, p5: p5Types) {
+  //   p5.drawingContext.shadowBlur = amount;
+  //   p5.drawingContext.shadowColor = p5.color(50, 150);
   // }
 
-  // function shadowsOff() {
-  //   drawingContext.shadowBlur = 0;
-  // }
 
-  // function keyTyped(p5: p5Types) { // eslint-disable-line no-unused-vars
-  //   if (p5.key === "1") {
-  //     p5.background(100)
-  //   }
-  //   if (p5.key === "2") {
-  //     vertexLength = lengths[0]
-  //   }
-  //   if (p5.key === "3") {
-  //     vertexLength = lengths[1]
-  //   }
-  //   if (p5.key === "4") {
-  //     vertexLength = lengths[2]
-  //   }
-  //   if (p5.key === "g") {
-  //     pallete = grayscalePallete
-  //   }
-  //   if (p5.key === "c") {
-  //     pallete = colouredPallete
-  //   }
-  // }
+  function keyPressed(p5: p5Types) { // eslint-disable-line no-unused-vars
+    if (p5.key === "1") {
+      p5.background(100)
+    }
+    if (p5.key === "2") {
+      vertexLength = lengths[0]
+    }
+    if (p5.key === "3") {
+      vertexLength = lengths[1]
+    }
+    if (p5.key === "4") {
+      vertexLength = lengths[2]
+    }
+    if (p5.key === "g") {
+      pallete = grayscalePallete
+    }
+    if (p5.key === "c") {
+      pallete = colouredPallete
+    }
+  }
 
-  return <Sketch setup={setup} draw={draw} />;
+  return <Sketch setup={setup} draw={draw} keyPressed={keyPressed} />;
 }
